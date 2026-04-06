@@ -1,0 +1,47 @@
+---
+name: Feature Request
+description: Suggest an improvement to the workflow, templates, prompts, or documentation
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for suggesting an improvement.
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: What would you like to see added or changed?
+    validations:
+      required: true
+  - type: textarea
+    id: motivation
+    attributes:
+      label: Motivation
+      description: Why is this useful? What problem does it solve?
+    validations:
+      required: false
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives Considered
+      description: Have you considered other approaches?
+    validations:
+      required: false
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      description: Which part of the workflow does this affect?
+      multiple: true
+      options:
+        - WORKFLOW.md
+        - Templates
+        - Prompt files
+        - Copilot instructions
+        - COMPACT_WORKFLOW.md
+        - Diagrams
+        - Documentation
+        - Other
+    validations:
+      required: false

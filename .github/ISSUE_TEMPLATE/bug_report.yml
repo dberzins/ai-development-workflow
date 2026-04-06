@@ -1,0 +1,52 @@
+---
+name: Bug Report
+description: Report a problem with the workflow, templates, prompts, or instructions
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for reporting a problem. Please fill in the details below.
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: What went wrong?
+      placeholder: Describe the issue clearly and concisely.
+    validations:
+      required: true
+  - type: textarea
+    id: affected
+    attributes:
+      label: Affected Files
+      description: Which workflow files, templates, or prompts are involved?
+      placeholder: |
+        e.g. templates/FEATURE_PLAN.md, .github/prompts/workflow.prompt.md
+    validations:
+      required: false
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected Behavior
+      description: What should happen instead?
+    validations:
+      required: false
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Steps to Reproduce
+      description: How can someone reproduce the problem?
+    validations:
+      required: false
+  - type: dropdown
+    id: package
+    attributes:
+      label: Workflow Package
+      description: Which adoption package are you using?
+      options:
+        - Minimal
+        - Enhanced
+        - Advanced
+        - Not sure
+    validations:
+      required: false

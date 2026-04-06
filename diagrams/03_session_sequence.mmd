@@ -1,0 +1,60 @@
+sequenceDiagram
+    participant Dev as 👤 Developer
+    participant AI as 🤖 Copilot
+
+    rect rgb(45, 106, 79, 0.15)
+        Note over Dev,AI: 🟢 SESSION START
+        Dev->>AI: Load context: SPEC.md, ROADMAP.md, *_PLAN.md
+        AI-->>Dev: ✅ Context confirmed, current status understood
+    end
+
+    rect rgb(106, 61, 154, 0.15)
+        Note over Dev,AI: 🔄 FEATURE LOOP
+        Dev->>AI: Create FEATURE_ANALYSIS.md for feature
+        AI-->>Dev: 📊 Analysis with options, pros/cons, recommendation
+        Dev->>AI: Choose Option X -> Create FEATURE_PLAN.md
+        AI-->>Dev: 📝 Phased plan with steps + checklist
+    end
+
+    rect rgb(2, 62, 138, 0.15)
+        Note over Dev,AI: ⚙️ IMPLEMENTATION LOOP
+        Dev->>AI: Implement Phase N from PLAN
+        AI-->>Dev: 💻 Code changes
+        Dev->>AI: Test / Validate
+        alt ✅ Pass
+            AI-->>Dev: Phase N validated
+        else ❌ Issue Found
+            Dev->>AI: Describe problem
+            AI-->>Dev: 🐛 ISSUE.md (diagnosis, fix, recommendations)
+            Dev->>AI: Re-implement fix
+            AI-->>Dev: 💻 Fixed code
+        end
+    end
+
+    rect rgb(191, 54, 12, 0.15)
+        Note over Dev,AI: 📚 DOCUMENTATION
+        Dev->>AI: Update CHANGELOG.md + README.md
+        AI-->>Dev: 📄 Updated docs
+    end
+
+    rect rgb(230, 81, 0, 0.15)
+        Note over Dev,AI: 🔧 REFACTORING (after big changes / multiple features)
+        Dev->>AI: Analyze codebase, create SCOPE_REFACTOR.md
+        AI-->>Dev: 🔧 Duplication, wrappers, dead code, complexity findings
+        Dev->>AI: Implement Priority 1 refactoring items
+        AI-->>Dev: 💻 Refactored code (tests passing)
+    end
+
+    rect rgb(21, 101, 192, 0.15)
+        Note over Dev,AI: 📦 PUBLISH (when ready to release)
+        Dev->>AI: Create PUBLISH.md targeting GitHub/GitLab
+        AI-->>Dev: 📦 Audit: missing docs, tests, secrets, CI, licensing
+        Dev->>AI: Fix blockers from PUBLISH.md
+        AI-->>Dev: ✅ All checklist items resolved
+    end
+
+    rect rgb(56, 142, 60, 0.15)
+        Note over Dev,AI: 🔴 SESSION END
+        Dev->>AI: Summarize session, update checklists
+        AI-->>Dev: ✅ ROADMAP.md checklist updated, summary provided
+    end

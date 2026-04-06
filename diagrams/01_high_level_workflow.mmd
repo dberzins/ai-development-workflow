@@ -1,0 +1,25 @@
+flowchart TD
+    A[Project or Feature Request] --> B[Create or update SPEC.md]
+    B --> E[Create or update ARCHITECTURE.md and SETUP.md]
+    B --> F[Create or update ROADMAP.md and RISKS.md]
+    E --> G[Create FEATURE_ANALYSIS.md]
+    F --> G
+    G --> H{Architecture decision needed?}
+    H -->|Yes| I[Create ADR_*.md or update DECISIONS.md]
+    H -->|No| J[Create FEATURE_PLAN.md]
+    I --> J
+    J --> K[Create or update TEST_PLAN.md or QA.md]
+    K --> L[Implement in phases]
+    L --> M{Issue found?}
+    M -->|Yes| N[Create FEATURE_ISSUE.md]
+    N --> G
+    M -->|No| O{Large change or drift?}
+    O -->|Yes| P[Create FEATURE_REFACTOR.md]
+    O -->|No| Q[Update FEATURE_DOC.md and API_REFERENCE.md]
+    P --> L
+    Q --> R[Update README.md and CHANGELOG.md]
+    R --> S[Prepare PUBLISH.md]
+    S --> T[Retrospective for milestone or release]
+    T --> U[Release or publish]
+    T -.->|Feed back lessons| E
+    T -.->|Feed back lessons| F
