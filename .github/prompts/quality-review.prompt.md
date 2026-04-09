@@ -3,7 +3,15 @@ description: "Use when: reviewing current changes for bugs, regressions, maintai
 argument-hint: "Change scope, feature, or files to review"
 agent: "agent"
 ---
-Use [workflow rules](workflow.prompt.md) and the relevant `*_PLAN.md`, `TEST_PLAN.md`, and `RISKS.md`.
+<!-- RULES:BEGIN — generated from RULES_REGISTRY.md, do not edit manually -->
+- CR3: Decisions affecting architecture, scope, or behavior must be recorded.
+- CR4: Keep work traceable across `SPEC -> ANALYSIS -> PLAN -> implementation -> release notes`.
+- CR8: No feature marked complete without validation record and quality review.
+- G9: After implementation, update relevant docs, checklists, and risks so traceability stays current.
+- C3: Never pre-check tasks that are not done.
+<!-- RULES:END -->
+
+Use the relevant `*_PLAN.md`, `TEST_PLAN.md`, and `RISKS.md`.
 
 Task:
 - Review `${input:reviewScope:current changes, feature, or file set}`.

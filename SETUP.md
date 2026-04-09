@@ -37,7 +37,6 @@ If `pwsh` is not installed, Windows PowerShell can still run the repository scri
 4. Trust the workspace when VS Code prompts for workspace trust.
 
 5. Open Copilot Chat and verify that the repository customizations are discoverable:
-   - `.github/prompts/workflow.prompt.md` should be available from the prompt picker or auto-attached based on context
    - prompt files under `.github/prompts/` should be available from the `/` prompt picker
 
 6. If you want to regenerate diagram images, install one of the following:
@@ -89,7 +88,6 @@ Useful chat actions in VS Code:
 | Problem | Cause | Fix |
 |---------|-------|-----|
 | Prompt files do not appear in the `/` picker | Workspace not opened at repo root, prompt discovery not refreshed, or workspace not trusted | Open the repository root, trust the workspace, and reopen the chat session |
-| Workflow prompt does not appear to apply | Prompt file not loaded or wrong workspace opened | Check that `.github/prompts/workflow.prompt.md` exists and the repo root is the active workspace |
 | Mermaid export fails with "Mermaid CLI is not available" | Neither `mmdc` nor `npx` is available | Install Mermaid CLI globally or install Node.js so `npx` is available |
 | Diagram PNGs are out of date | Mermaid sources changed without rerunning export | Run `./scripts/export-mermaid-diagrams.sh` (or `.ps1` on Windows) from the repo root |
 | Relative links in prompts or docs look broken | File moved or opened from the wrong folder context | Keep the repository structure intact and open the repo root in VS Code |

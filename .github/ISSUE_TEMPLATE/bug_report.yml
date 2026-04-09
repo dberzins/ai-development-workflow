@@ -21,7 +21,7 @@ body:
       label: Affected Files
       description: Which workflow files, templates, or prompts are involved?
       placeholder: |
-        e.g. templates/FEATURE_PLAN.md, .github/prompts/workflow.prompt.md
+        e.g. templates/FEATURE_PLAN.md, .github/prompts/feature-analysis.prompt.md
     validations:
       required: false
   - type: textarea

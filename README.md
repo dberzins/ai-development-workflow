@@ -1,6 +1,6 @@
 # AI Development Workflow
 
-Workflow Version: 0.1.0
+Workflow Version: 0.2.0
 
 The repository release version and workflow package version are currently the same contract.
 
@@ -10,7 +10,7 @@ This repository packages a structured workflow for working with GitHub Copilot d
 
 The repository is organized as a layered workflow system:
 
-- workflow rules for Copilot in [.github/prompts/workflow.prompt.md](.github/prompts/workflow.prompt.md)
+- AI rules source in [RULES_REGISTRY.md](RULES_REGISTRY.md)
 - canonical document scaffolds in [templates](templates)
 - human quick reference in [COMPACT_WORKFLOW.md](COMPACT_WORKFLOW.md)
 - task-specific prompt files in [.github/prompts](.github/prompts)
@@ -20,7 +20,7 @@ The repository is organized as a layered workflow system:
 
 - Full workflow reference with document lifecycle, prompt patterns, governance rules, and diagrams in [WORKFLOW.md](WORKFLOW.md)
 - Compact human quick reference in [COMPACT_WORKFLOW.md](COMPACT_WORKFLOW.md)
-- Workflow rules for Copilot in [.github/prompts/workflow.prompt.md](.github/prompts/workflow.prompt.md)
+- AI rules source with rule IDs and prompt mapping in [RULES_REGISTRY.md](RULES_REGISTRY.md)
 - Repository release notes in [CHANGELOG.md](CHANGELOG.md)
 - Contribution workflow in [CONTRIBUTING.md](CONTRIBUTING.md)
 - Internal security reporting guidance in [SECURITY.md](SECURITY.md)
@@ -34,7 +34,7 @@ The repository is organized as a layered workflow system:
 | Layer | Artifact | Purpose |
 |------|----------|---------|
 | Source of truth | [WORKFLOW.md](WORKFLOW.md) | Full workflow definition, rules, dependencies, and prompt catalog |
-| AI workflow layer | [.github/prompts/workflow.prompt.md](.github/prompts/workflow.prompt.md) | Workflow rules that apply to Copilot requests |
+| AI rules source | [RULES_REGISTRY.md](RULES_REGISTRY.md) | Canonical rule text and prompt→rule mapping for Copilot |
 | Release notes | [CHANGELOG.md](CHANGELOG.md) | Repository-level change history for publishing and release tracking |
 | Contribution guide | [CONTRIBUTING.md](CONTRIBUTING.md) | Expected change flow, review expectations, and validation rules |
 | Security policy | [SECURITY.md](SECURITY.md) | Internal reporting and handling guidance for repository security concerns |
@@ -75,7 +75,7 @@ Choose the package that matches how much workflow support you want in a target r
 
 | Package | Include | Use When |
 |---------|---------|----------|
-| Minimal | `.github/prompts/workflow.prompt.md`, `templates/` | Lowest token overhead with reliable workflow rules |
+| Minimal | `RULES_REGISTRY.md`, `templates/`, `.github/prompts/` | Lowest token overhead with reliable per-prompt rules |
 | Enhanced | Minimal + `COMPACT_WORKFLOW.md` | Teams want a quick human reference in the repo |
 | Advanced | Enhanced + `.github/prompts/` | Teams want reusable slash-command prompts for common workflow tasks |
 
@@ -95,7 +95,7 @@ The standard artifact flow is:
 Working rules for this repository:
 
 - keep [WORKFLOW.md](WORKFLOW.md) as the source of truth
-- keep [.github/prompts/workflow.prompt.md](.github/prompts/workflow.prompt.md) concise
+- keep [RULES_REGISTRY.md](RULES_REGISTRY.md) as the AI-rules source; run `/re-sync-rules` after rule changes
 - keep heavy workflow detail in [COMPACT_WORKFLOW.md](COMPACT_WORKFLOW.md) and [.github/prompts](.github/prompts)
 - update related docs and checklists when workflow assets change
 

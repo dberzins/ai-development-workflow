@@ -3,7 +3,18 @@ description: "Use when: ending a session and updating the workflow docs, checkli
 argument-hint: "Feature, issue, or milestone being wrapped up"
 agent: "agent"
 ---
-Use [workflow rules](workflow.prompt.md) and the docs relevant to `${input:workItem:feature, issue, or milestone}`.
+<!-- RULES:BEGIN — generated from RULES_REGISTRY.md, do not edit manually -->
+- CR4: Keep work traceable across `SPEC -> ANALYSIS -> PLAN -> implementation -> release notes`.
+- CR5: Checklists track execution status; they do not replace technical content.
+- CR8: No feature marked complete without validation record and quality review.
+- G3: Owner or Author must always be a human name, not an AI tool.
+- G9: After implementation, update relevant docs, checklists, and risks so traceability stays current.
+- C3: Never pre-check tasks that are not done.
+- S1: Load only the docs relevant to the current task: usually `SPEC.md`, `ARCHITECTURE.md`, `ROADMAP.md`, and related analysis, ADR, issue, plan, or test docs.
+- S3: At session end, summarize completed and pending work and update the relevant checklists and docs.
+<!-- RULES:END -->
+
+Use the docs relevant to `${input:workItem:feature, issue, or milestone}`.
 
 Task:
 - Close the session for `${input:workItem:feature, issue, or milestone}`.

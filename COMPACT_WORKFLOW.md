@@ -1,34 +1,36 @@
-Source: WORKFLOW.md (compact human reference — not always-on Copilot context; see .github/prompts/workflow.prompt.md for workflow rules)
+Source: WORKFLOW.md (compact human reference — not always-on Copilot context; see RULES_REGISTRY.md for AI workflow rules)
+Related: RULES_REGISTRY.md, ADR_001_RULES_REGISTRY.md
 Templates: repo-root templates/ (or .github/templates/ if bundled there)
 
 # AI Development Workflow — Compact Reference
 
-Workflow Version: 0.1.0
+Workflow Version: 0.2.0
 
 ## Role
 
 This file is the human quick reference for the workflow. It is not intended to be the always-on Copilot instructions layer.
 
-- Use `.github/prompts/workflow.prompt.md` for the workflow rules that apply to Copilot requests.
+- Use `RULES_REGISTRY.md` for the AI-rules source. Task prompts pull only their relevant rules inline from it via `/re-sync-rules`.
 - Use `COMPACT_WORKFLOW.md` when a human wants a quick workflow lookup or wants to attach additional workflow context manually.
 - Use `.github/prompts/` for reusable task-specific workflows that should not be loaded on every request.
 
 ## Layered Package
 
 | Layer | Artifact | Purpose | Automatic |
-|-------|----------|---------|-----------|
-| Workflow rules | `.github/prompts/workflow.prompt.md` | Workflow guardrails for Copilot | No |
+|-------|----------|---------|----------|
+| AI rules source | `RULES_REGISTRY.md` | Canonical rule text + prompt→rule mapping; re-synced into task prompts | No |
+| Task prompts | `.github/prompts/*.prompt.md` | Inline rules + task instructions for each workflow operation | No |
 | Templates | `templates/` | Canonical scaffolds for generated documents | No |
-| Human quick reference | `COMPACT_WORKFLOW.md` | Readable workflow summary and optional manual context | No |
-| Task workflows | `.github/prompts/` | Reusable prompts for repetitive workflow tasks | No |
+| Human quick reference | `COMPACT_WORKFLOW.md` | Readable workflow summary, Document Registry, optional manual context | No |
+| Re-sync prompt | `.github/prompts/re-sync-rules.prompt.md` | Regenerates inline rule blocks in task prompts from registry | No |
 
 ## Deployment Packages
 
 | Package | Include | Use When |
 |---------|---------|----------|
-| Minimal | `.github/prompts/workflow.prompt.md`, `templates/` | Lowest token overhead with reliable workflow rules |
+| Minimal | `RULES_REGISTRY.md`, `templates/`, `.github/prompts/` | Lowest token overhead with reliable per-prompt rules |
 | Enhanced | Minimal + `COMPACT_WORKFLOW.md` | Team or human-heavy usage where a quick reference should live in the repo |
-| Advanced | Enhanced + `.github/prompts/` | Frequent workflow use where reusable slash-command prompts reduce repeated prompting |
+| Advanced | Enhanced + full `.github/prompts/` suite | Frequent workflow use where reusable slash-command prompts reduce repeated prompting |
 
 When the prompt bundle is installed, prefer `/bootstrap-workflow`, `/feature-analysis`, `/feature-plan`, `/test-plan`, `/quality-review`, `/session-start`, and `/session-end` over pasting long workflow prompts manually.
 
@@ -46,6 +48,9 @@ When the prompt bundle is installed, prefer `/bootstrap-workflow`, `/feature-ana
 `SPEC → [ARCHITECTURE/SETUP + ROADMAP/RISKS] → ANALYSIS → ADR → PLAN → TEST PLAN → IMPLEMENT → QUALITY/REVIEW → ISSUE/REFACTOR → DOCS UPDATE → PUBLISH → RETROSPECTIVE → feed back into ROADMAP/RISKS`
 
 ## Document Registry with Dependencies
+
+> This table is the authoritative Document Registry. It lives here so it is available as human
+> reference without being injected as AI token overhead on every prompt invocation.
 
 | Document | Pattern | Requires | Required by | Checklist |
 |----------|---------|----------|-------------|-----------|
